@@ -6,13 +6,13 @@ class NovaPoshta {
 		this.logger = options.logger || false;
 	}
 
-	log(message, params = {}, type = 'info') {
+	_log(message, params = {}, type = 'info') {
 		if (this.logger) {
 			this.logger.log(type, message, params);
 		}
 	}
 
-	request(params) {
+	_request(params) {
 		const self = this;
 		const args = {
 			method: 'POST',
@@ -23,12 +23,12 @@ class NovaPoshta {
 			const fetchPromise = fetch(self.endpoint, args);
 
 			const onSuccess = (json, data) => {
-				self.log(`NovaPoshta::${params.calledMethod} request executed`, { params, response: json }, 'info');
+				self._log(`NovaPoshta::${params.calledMethod} request executed`, { params, response: json }, 'info');
 				resolve(json, data);
 			};
 
 			const onError = (error, data) => {
-				self.log(`NovaPoshta::${params.calledMethod} request failed: ${error}`, params, 'error');
+				self._log(`NovaPoshta::${params.calledMethod} request failed: ${error}`, params, 'error');
 				reject(error, data);
 			};
 
@@ -53,20 +53,60 @@ class NovaPoshta {
 		});
 	}
 
-	getWarehouseTypes(params = {}) {
-		return this.request({
+	_requestAddress(method, params = {}) {
+		return this._request({
 			modelName: 'Address',
-			calledMethod: 'getWarehouseTypes',
+			calledMethod: method,
+			methodProperties: params,
+		});
+	}
+
+	searchSettlements(params = {}) {
+		return this._requestAddress('searchSettlements', params);
+	}
+
+	searchSettlementStreets(params = {}) {
+		return this._requestAddress('searchSettlementStreets', params);
+	}
+
+	updateAddress(params = {}) {
+		return this._requestAddress('update', params);
+	}
+
+	saveAddress(params = {}) {
+		return this._requestAddress('save', params);
+	}
+
+	getAreas(params = {}) {
+		return this._requestAddress('getAreas', params);
+	}
+
+	getCities(params = {}) {
+		return this._requestAddress('getCities', params);
+	}
+
+	getSettlements(params = {}) {
+		return this._request({
+			modelName: 'AddressGeneral',
+			calledMethod: 'getSettlements',
 			methodProperties: params,
 		});
 	}
 
 	getWarehouses(params = {}) {
-		return this.request({
-			modelName: 'Address',
-			calledMethod: 'getWarehouses',
-			methodProperties: params,
-		});
+		return this._requestAddress('getWarehouses', params);
+	}
+
+	getWarehouseTypes(params = {}) {
+		return this._requestAddress('getWarehouseTypes', params);
+	}
+
+	getStreet(params = {}) {
+		return this._requestAddress('getStreet', params);
+	}
+
+	deleteAddress(params = {}) {
+		return this._requestAddress('delete', params);
 	}
 
 }
