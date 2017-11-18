@@ -20,7 +20,7 @@ class NovaPoshta {
 		});
 	}
 
-	getWarehouseTypes(params) {
+	getWarehouseTypes(params = {}) {
 		return this.request({
 			modelName: 'Address',
 			calledMethod: 'getWarehouseTypes',
@@ -28,7 +28,7 @@ class NovaPoshta {
 		});
 	}
 
-	getWarehouses(params) {
+	getWarehouses(params = {}) {
 		return this.request({
 			modelName: 'Address',
 			calledMethod: 'getWarehouses',
