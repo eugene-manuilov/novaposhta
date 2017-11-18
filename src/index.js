@@ -1,5 +1,5 @@
 class NovaPoshta {
-	constructor(apiKey) {
+	constructor(apiKey = '') {
 		this.apiKey = apiKey;
 		this.endpoint = 'https://api.novaposhta.ua/v2.0/json/';
 	}

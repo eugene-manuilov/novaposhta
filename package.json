@@ -45,5 +45,14 @@
 		"eslint-plugin-import": "^2.8.0",
 		"jest": "^21.2.1",
 		"webpack": "^3.8.1"
+	},
+	"devDependencies": {
+		"node-fetch": "^1.7.3"
+	},
+	"jest": {
+		"automock": false,
+		"setupFiles": [
+			"./jestrc.js"
+		]
 	}
 }
