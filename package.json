@@ -1,6 +1,6 @@
 {
 	"name": "novaposhta",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "JavaScript module to interact with NovaPoshta API",
 	"author": "Eugene Manuilov <eugene.manuilov@gmail.com>",
 	"license": "MIT",
@@ -31,7 +31,7 @@
 		"test": "jest",
 		"prepublish": "npm run build"
 	},
-	"dependencies": {
+	"devDependencies": {
 		"babel-cli": "^6.26.0",
 		"babel-core": "^6.26.0",
 		"babel-eslint": "^8.0.2",
@@ -44,10 +44,8 @@
 		"eslint-loader": "^1.9.0",
 		"eslint-plugin-import": "^2.8.0",
 		"jest": "^21.2.1",
+		"node-fetch": "^1.7.3",
 		"webpack": "^3.8.1"
-	},
-	"devDependencies": {
-		"node-fetch": "^1.7.3"
 	},
 	"jest": {
 		"automock": false,

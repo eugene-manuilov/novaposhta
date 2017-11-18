@@ -46,7 +46,7 @@ api.getCities({ Ref: "ebc0eda9-93ec-11e3-b441-0050568002cf" }).then((json) => {
 });
 ```
 
-## Methods
+## Supported Methods
 
 - [searchSettlements](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/58e5ebeceea27017bc851d67)
 - [searchSettlementStreets](https://devcenter.novaposhta.ua/docs/services/556d7ccaa0fe4f08e8f7ce43/operations/58e5f369eea27017540b58ac)
