@@ -5,7 +5,7 @@ const config = {};
 
 // entry and context
 config.context = path.resolve(__dirname, 'src');
-config.entry = './index.js';
+config.entry = './NovaPoshta.js';
 
 // output
 config.output = {
