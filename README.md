@@ -1,4 +1,4 @@
-# novaposhta 0.1.0
+# novaposhta 0.1.2
 
 ## Instalation
 

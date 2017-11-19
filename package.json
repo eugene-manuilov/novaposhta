@@ -1,6 +1,6 @@
 {
 	"name": "novaposhta",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "JavaScript module to interact with NovaPoshta API",
 	"author": "Eugene Manuilov <eugene.manuilov@gmail.com>",
 	"license": "MIT",
@@ -15,7 +15,7 @@
 	"keywords": [
 		"novaposhta"
 	],
-	"main": "index.js",
+	"main": "lib/index",
 	"files": [
 		"*.md",
 		"dist",
