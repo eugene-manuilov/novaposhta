@@ -1,4 +1,4 @@
-import NovaPoshta from '../lib/index';
+import NovaPoshta from '../index';
 
 describe('Address', () => {
 	const api = new NovaPoshta();
