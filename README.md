@@ -22,7 +22,7 @@ import NovaPoshta from 'novaposhta';
 const api = new NovaPoshta({ apiKey: '...' });
 
 api.address.getCities({ Ref: "ebc0eda9-93ec-11e3-b441-0050568002cf" }).then((json) => {
-	// do something
+    // do something
 });
 ```
 
@@ -37,8 +37,8 @@ const winstonLogger = new Winston.Logger({ level: "debug" });
 winstonLogger.add(Winston.transports.Console, WinstonFormatter.config());
 
 const api = new NovaPoshta({
-	apiKey: '...',
-	logger: winstonLogger,
+    apiKey: '...',
+    logger: winstonLogger,
 });
 
 api.address.getCities({ Ref: "ebc0eda9-93ec-11e3-b441-0050568002cf" }).then((json) => {
@@ -54,7 +54,7 @@ api.address.getCities({ Ref: "ebc0eda9-93ec-11e3-b441-0050568002cf" }).then((jso
 const api = new NovaPoshta({ apiKey: '...' });
 
 api.address.getCities({ Ref: "ebc0eda9-93ec-11e3-b441-0050568002cf" }).then((json) => {
-	// do something
+    // do something
 });
 ```
 
@@ -76,7 +76,7 @@ api.address.getCities({ Ref: "ebc0eda9-93ec-11e3-b441-0050568002cf" }).then((jso
 const api = new NovaPoshta({ apiKey: '...' });
 
 api.common.getTimeIntervals({ "RecipientCityRef": "8d5a980d-391c-11dd-90d9-001a92567626" }).then((json) => {
-	// do something
+    // do something
 });
 ```
 
