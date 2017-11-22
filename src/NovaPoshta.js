@@ -1,9 +1,15 @@
+import Address from './models/Address';
+
 class NovaPoshta {
 
 	constructor(options = {}) {
-		this.apiKey = options.apiKey || '';
-		this.endpoint = options.endpoint || 'https://api.novaposhta.ua/v2.0/json/';
-		this.logger = options.logger || false;
+		const self = this;
+
+		self.apiKey = options.apiKey || '';
+		self.endpoint = options.endpoint || 'https://api.novaposhta.ua/v2.0/json/';
+		self.logger = options.logger || false;
+
+		self.address = new Address(self);
 	}
 
 	_log(message, params = {}, type = 'info') {
@@ -51,62 +57,6 @@ class NovaPoshta {
 				}
 			});
 		});
-	}
-
-	_requestAddress(method, params = {}) {
-		return this._request({
-			modelName: 'Address',
-			calledMethod: method,
-			methodProperties: params,
-		});
-	}
-
-	searchSettlements(params = {}) {
-		return this._requestAddress('searchSettlements', params);
-	}
-
-	searchSettlementStreets(params = {}) {
-		return this._requestAddress('searchSettlementStreets', params);
-	}
-
-	updateAddress(params = {}) {
-		return this._requestAddress('update', params);
-	}
-
-	saveAddress(params = {}) {
-		return this._requestAddress('save', params);
-	}
-
-	getAreas(params = {}) {
-		return this._requestAddress('getAreas', params);
-	}
-
-	getCities(params = {}) {
-		return this._requestAddress('getCities', params);
-	}
-
-	getSettlements(params = {}) {
-		return this._request({
-			modelName: 'AddressGeneral',
-			calledMethod: 'getSettlements',
-			methodProperties: params,
-		});
-	}
-
-	getWarehouses(params = {}) {
-		return this._requestAddress('getWarehouses', params);
-	}
-
-	getWarehouseTypes(params = {}) {
-		return this._requestAddress('getWarehouseTypes', params);
-	}
-
-	getStreet(params = {}) {
-		return this._requestAddress('getStreet', params);
-	}
-
-	deleteAddress(params = {}) {
-		return this._requestAddress('delete', params);
 	}
 
 }
