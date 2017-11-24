@@ -95,6 +95,27 @@ api.common.getTimeIntervals({ "RecipientCityRef": "8d5a980d-391c-11dd-90d9-001a9
 - [getPaymentForms](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890d)
 - [getOwnershipFormsList](https://devcenter.novaposhta.ua/docs/services/55702570a0fe4f0cf4fc53ed/operations/55702571a0fe4f0b6483890b)
 
+### Counterparty
+
+```javascript
+const api = new NovaPoshta({ apiKey: '...' });
+
+api.counterparty.getCounterpartyContactPerson({ ... }).then((json) => {
+    // do something
+});
+```
+
+- [getCounterpartyAddresses](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fdcb4a0fe4f105c087611)
+- [getCounterpartyOptions](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55801976a0fe4f105c087614)
+- [getCounterpartyContactPerson](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fe424a0fe4f105c087612)
+- [getCounterparties](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd789a0fe4f105c08760f)
+- [saveCounterparty](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557ebbd3a0fe4f02fc455b2e)
+- [updateCounterparty](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fbe62a0fe4f105c08760d)
+- [deleteCounterparty](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd35da0fe4f105c08760e)
+- [saveContactPerson](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55828c4ca0fe4f0adc08ef27)
+- [updateContactPerson](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/558297aca0fe4f0adc08ef28)
+- [deleteContactPerson](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55829aa2a0fe4f0adc08ef29)
+
 ## Contribute
 
 What to help or have a suggestion? Open a [new ticket](https://github.com/eugene-manuilov/novaposhta/issues/new) and we can discuss it or submit pull request. Please, make sure you run `npm test` before submitting a pull request.

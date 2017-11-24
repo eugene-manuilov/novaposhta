@@ -1,5 +1,6 @@
 import Address from './models/Address';
 import Common from './models/Common';
+import Counterparty from './models/Counterparty';
 
 class NovaPoshta {
 
@@ -12,6 +13,7 @@ class NovaPoshta {
 
 		self.address = new Address(self);
 		self.common = new Common(self);
+		self.counterparty = new Counterparty(self);
 	}
 
 	_log(message, params = {}, type = 'info') {
