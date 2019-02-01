@@ -1,6 +1,6 @@
 {
 	"name": "novaposhta",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "JavaScript module to interact with NovaPoshta API",
 	"author": "Eugene Manuilov <eugene.manuilov@gmail.com>",
 	"license": "MIT",
