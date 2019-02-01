@@ -3,19 +3,21 @@ const webpack = require('webpack');
 
 const config = {};
 
+config.mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+
 // entry and context
 config.context = path.resolve(__dirname, 'src');
 config.entry = './NovaPoshta.js';
 
 // output
 config.output = {
-	library: "NovaPoshta",
-	libraryTarget: 'umd'
+	library: 'NovaPoshta',
+	libraryTarget: 'umd',
 };
 
 // define externals
 config.externals = {
-	fetch: 'fetch'
+	fetch: 'fetch',
 };
 
 // define module and plugins
@@ -26,16 +28,16 @@ config.plugins = [];
 config.module.rules.push({
 	test: /\.js$/,
 	enforce: 'pre',
-	exclude: /node_modules/,
+	exclude: /node_modules|__tests__|dist/,
 	use: [
 		{
 			loader: 'eslint-loader',
 			options: {
 				failOnWarning: false,
-				failOnError: true
-			}
-		}
-	]
+				failOnError: true,
+			},
+		},
+	],
 });
 
 // babel loader rule
@@ -47,18 +49,13 @@ config.module.rules.push({
 		options: {
 			cacheDirectory: true,
 			presets: [
-				['env', { targets: { browsers: ["last 2 versions", "safari >= 7"] } }]
-			]
-		}
-	}
+				['@babel/preset-env', { targets: { browsers: ['last 2 versions', 'safari >= 7'] } }],
+			],
+		},
+	},
 });
 
 // no emit plugin
 config.plugins.push(new webpack.NoEmitOnErrorsPlugin());
-
-// uglify plugin
-if ('production' === process.env.NODE_ENV) {
-	config.plugins.push(new webpack.optimize.UglifyJsPlugin({ sourceMap: true }));
-}
 
 module.exports = config;
