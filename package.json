@@ -26,8 +26,9 @@
 	"scripts": {
 		"build": "npm run build:commonjs & npm run build:umd & npm run build:umd:min",
 		"build:commonjs": "mkdir -p lib && babel ./src -d lib",
-		"build:umd": "webpack dist/novaposhta.js",
-		"build:umd:min": "NODE_ENV=production webpack dist/novaposhta.min.js",
+		"build:umd": "webpack ./src/NovaPoshta.js --output-filename=novaposhta.js",
+		"build:umd:min": "NODE_ENV=production webpack ./src/NovaPoshta.js --output-filename=novaposhta.min.js",
+		"clean": "rm -rf ./dist ./lib",
 		"test": "jest",
 		"prepublish": "npm run build"
 	},

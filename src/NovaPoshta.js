@@ -67,6 +67,6 @@ class NovaPoshta {
 
 }
 
-NovaPoshta.version = '0.3.0';
+NovaPoshta.version = '1.0.0';
 
 export default NovaPoshta;
