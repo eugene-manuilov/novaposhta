@@ -1,9 +1,74 @@
-import Address from './models/Address';
-import Common from './models/Common';
-import Counterparty from './models/Counterparty';
-import InternetDocument from './models/InternetDocument';
+import Model from './Model';
 
 class NovaPoshta {
+
+	static getAddressMethods() {
+		return [
+			'delete',
+			'getAreas',
+			'getCities',
+			'getSettlements',
+			'getStreet',
+			'getWarehouses',
+			'getWarehouseTypes',
+			'save',
+			'searchSettlements',
+			'searchSettlementStreets',
+			'update',
+		];
+	}
+
+	static getCommonMethods() {
+		return [
+			'getBackwardDeliveryCargoTypes',
+			'getCargoDescriptionList',
+			'getCargoTypes',
+			'getMessageCodeText',
+			'getOwnershipFormsList',
+			'getPackList',
+			'getPalletsList',
+			'getPaymentForms',
+			'getServiceTypes',
+			'getTimeIntervals',
+			'getTiresWheelsList',
+			'getTypesOfCounterparties',
+			'getTypesOfPayers',
+			'getTypesOfPayersForRedelivery',
+		];
+	}
+
+	static getCounterpartyMethods() {
+		return [
+			'delete',
+			'getCounterpartyAddresses',
+			'getCounterpartyOptions',
+			'getCounterpartyContactPerson',
+			'getCounterparties',
+			'save',
+			'update',
+		];
+	}
+
+	static getContactPersonMethods() {
+		return [
+			'delete',
+			'save',
+			'update',
+		];
+	}
+
+	static getInternetDocumentMethods() {
+		return [
+			'delete',
+			'generateReport',
+			'getDocumentDeliveryDate',
+			'getDocumentList',
+			'getDocumentPrice',
+			'getStatusDocuments',
+			'save',
+			'update',
+		];
+	}
 
 	constructor(options = {}) {
 		const self = this;
@@ -12,10 +77,11 @@ class NovaPoshta {
 		self.endpoint = options.endpoint || 'https://api.novaposhta.ua/v2.0/json/';
 		self.logger = options.logger || false;
 
-		self.address = new Address(self);
-		self.common = new Common(self);
-		self.counterparty = new Counterparty(self);
-		self.document = new InternetDocument(self);
+		self.address = new Model(self, 'Address', NovaPoshta.getAddressMethods());
+		self.common = new Model(self, 'Common', NovaPoshta.getCommonMethods());
+		self.counterparty = new Model(self, 'Counterparty', NovaPoshta.getCounterpartyMethods());
+		self.contactPerson = new Model(self, 'ContactPerson', NovaPoshta.getContactPersonMethods());
+		self.internetDocument = new Model(self, 'InternetDocument', NovaPoshta.getInternetDocumentMethods());
 	}
 
 	_log(message, params = {}, type = 'info') {

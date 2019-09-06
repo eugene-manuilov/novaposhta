@@ -1,23 +1,11 @@
-import NovaPoshta from '../index';
+import NovaPoshta from '../src/NovaPoshta';
 
-describe('Address class', () => {
+describe('Address model', () => {
 	const api = new NovaPoshta();
 	const { address } = api;
 	const checkSnapshot = json => expect(JSON.stringify(json)).toMatchSnapshot();
 
-	test.each([
-		'searchSettlements',
-		'searchSettlementStreets',
-		'update',
-		'save',
-		'getAreas',
-		'getCities',
-		'getSettlements',
-		'getWarehouses',
-		'getWarehouseTypes',
-		'getStreet',
-		'delete',
-	])('has %s method', (fn) => {
+	test.each(NovaPoshta.getAddressMethods())('has %s method', (fn) => {
 		const np = new NovaPoshta();
 		expect(typeof np.address[fn]).toBe('function');
 	});

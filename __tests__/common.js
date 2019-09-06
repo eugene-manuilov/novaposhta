@@ -1,9 +1,14 @@
-import NovaPoshta from '../index';
+import NovaPoshta from '../src/NovaPoshta';
 
-describe('Common', () => {
+describe('Common model', () => {
 	const api = new NovaPoshta();
 	const { common } = api;
 	const checkSnapshot = json => expect(JSON.stringify(json)).toMatchSnapshot();
+
+	test.each(NovaPoshta.getCommonMethods())('has %s method', (fn) => {
+		const np = new NovaPoshta();
+		expect(typeof np.common[fn]).toBe('function');
+	});
 
 	test('getTimeIntervals', () => common.getTimeIntervals({ "RecipientCityRef": "8d5a980d-391c-11dd-90d9-001a92567626" }).then(checkSnapshot));
 	test('getCargoTypes', () => common.getCargoTypes().then(checkSnapshot));
