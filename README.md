@@ -109,19 +109,31 @@ api.counterparty.getCounterpartyContactPerson({ ... }).then((json) => {
 - [getCounterpartyOptions](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55801976a0fe4f105c087614)
 - [getCounterpartyContactPerson](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fe424a0fe4f105c087612)
 - [getCounterparties](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd789a0fe4f105c08760f)
-- [saveCounterparty](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557ebbd3a0fe4f02fc455b2e)
-- [updateCounterparty](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fbe62a0fe4f105c08760d)
-- [deleteCounterparty](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd35da0fe4f105c08760e)
-- [saveContactPerson](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55828c4ca0fe4f0adc08ef27)
-- [updateContactPerson](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/558297aca0fe4f0adc08ef28)
-- [deleteContactPerson](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55829aa2a0fe4f0adc08ef29)
+- [save](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557ebbd3a0fe4f02fc455b2e)
+- [update](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fbe62a0fe4f105c08760d)
+- [delete](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd35da0fe4f105c08760e)
+
+### ContactPerson
+
+
+```javascript
+const api = new NovaPoshta({ apiKey: '...' });
+
+api.contactPerson.getCounterpartyContactPerson({ ... }).then((json) => {
+    // do something
+});
+```
+
+- [save](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55828c4ca0fe4f0adc08ef27)
+- [update](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/558297aca0fe4f0adc08ef28)
+- [delete](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55829aa2a0fe4f0adc08ef29)
 
 ### Internet Document
 
 ```javascript
 const api = new NovaPoshta({ apiKey: '...' });
 
-api.document.getDocumentList({ ... }).then((json) => {
+api.internetDocument.getDocumentList({ ... }).then((json) => {
     // do something
 });
 ```
@@ -130,11 +142,10 @@ api.document.getDocumentList({ ... }).then((json) => {
 - [getDocumentDeliveryDate](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/558153cca0fe4f12149812a1)
 - [getDocumentPrice](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55702ee2a0fe4f0cf4fc53ef)
 - [getStatusDocuments](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd789a0fe4f105c08760f)
-- [saveInternetDocument](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/556ef753a0fe4f02049c664f)
-- [updateInternetDocument](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55701ec2a0fe4f0cf4fc53eb)
-- [deleteInternetDocument](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55701fa5a0fe4f0cf4fc53ec)
+- [save](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/556ef753a0fe4f02049c664f)
+- [update](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55701ec2a0fe4f0cf4fc53eb)
+- [delete](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55701fa5a0fe4f0cf4fc53ec)
 - [generateReport](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55815af6a0fe4f12149812a2)
-
 
 ## Contribute
 
