@@ -1,20 +1,18 @@
-# novaposhta 1.0.0
+# Novaposhta 1.0.0
 
-## Instalation
-
-You can add this package using following commands:
+A small library that provides a helper class to work with [Nova Poshta API](https://devcenter.novaposhta.ua/docs/services/). Install it using the following command:
 
 ```
 npm i novaposhta
 ```
 
-```
-yarn add novaposhta
-```
-
 ## Usage
 
-Basic example:
+The library exports the `NovaPostha` class that you need to use to make requests to API. You need to instantiate an instance of the class providing an object with configuration options. The instance of the class has getters that allows you to get access to a specific model of the APIs.
+
+Also, please, pay attention that some API methods require API key for authorization. You can obtain it by going to [this page](https://my.novaposhta.ua/settings/index#apikeys).
+
+Here is a basic example that shows how to use the library:
 
 ```javascript
 import NovaPoshta from 'novaposhta';
@@ -26,7 +24,7 @@ api.address.getCities({ Ref: "ebc0eda9-93ec-11e3-b441-0050568002cf" }).then((jso
 });
 ```
 
-Winston Logger:
+A bit more advanced example that demonstrates how you can configure a Winston Logger and use it with the library:
 
 ```javascript
 import NovaPoshta from 'novaposhta';
@@ -46,7 +44,7 @@ api.address.getCities({ Ref: "ebc0eda9-93ec-11e3-b441-0050568002cf" }).then((jso
 });
 ```
 
-## Supported Methods
+## Supported API Methods
 
 ### Address
 
