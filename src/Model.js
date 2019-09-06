@@ -1,19 +1,31 @@
 class Model {
 
-	constructor(api, name, methods) {
+	constructor(api, model, methods) {
 		const self = this;
 
 		self.api = api;
-		self.name = name;
 
 		methods.forEach((method) => {
-			self[method] = self._request.bind(self, method);
+			const schema = typeof method === 'string' ? { method } : method;
+			if (schema.alias) {
+				self[schema.method] = self[schema.alias];
+			} else {
+				const params = [self, schema.model || model, schema.method];
+				self[schema.method] = schema.deprecated
+					? self._requestDeprecated.bind(...params)
+					: self._request.bind(...params);
+			}
 		});
 	}
 
-	_request(calledMethod, methodProperties = {}) {
+	_requestDeprecated(modelName, calledMethod, methodProperties = {}) {
+		this.api.log(`${modelName}::${calledMethod} is deprecated, it will be removed in a next version`, {}, 'warn');
+		this._request(modelName, calledMethod, methodProperties);
+	}
+
+	_request(modelName, calledMethod, methodProperties = {}) {
 		return this.api._request({
-			modelName: this.name,
+			modelName,
 			calledMethod,
 			methodProperties,
 		});
