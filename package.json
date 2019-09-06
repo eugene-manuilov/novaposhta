@@ -10,7 +10,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git@github.com:eugene-manuilov/redux-wordpress.git"
+		"url": "git@github.com:eugene-manuilov/novaposhta.git"
 	},
 	"keywords": [
 		"novaposhta"
