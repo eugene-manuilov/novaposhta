@@ -1,6 +1,7 @@
 import Address from './models/Address';
 import Common from './models/Common';
 import Counterparty from './models/Counterparty';
+import InternetDocument from './models/InternetDocument';
 
 class NovaPoshta {
 
@@ -14,6 +15,7 @@ class NovaPoshta {
 		self.address = new Address(self);
 		self.common = new Common(self);
 		self.counterparty = new Counterparty(self);
+		self.document = new InternetDocument(self);
 	}
 
 	_log(message, params = {}, type = 'info') {
@@ -65,6 +67,6 @@ class NovaPoshta {
 
 }
 
-NovaPoshta.version = '0.2.0';
+NovaPoshta.version = '0.3.0';
 
 export default NovaPoshta;
