@@ -117,7 +117,7 @@ api.counterparty.getCounterpartyContactPerson({ ... }).then((json) => {
 ```javascript
 const api = new NovaPoshta({ apiKey: '...' });
 
-api.contactPerson.getCounterpartyContactPerson({ ... }).then((json) => {
+api.contactPerson.save({ ... }).then((json) => {
     // do something
 });
 ```
