@@ -1,9 +1,26 @@
 import NovaPoshta from '../index';
 
-describe('Address', () => {
+describe('Address class', () => {
 	const api = new NovaPoshta();
 	const { address } = api;
 	const checkSnapshot = json => expect(JSON.stringify(json)).toMatchSnapshot();
+
+	test.each([
+		'searchSettlements',
+		'searchSettlementStreets',
+		'update',
+		'save',
+		'getAreas',
+		'getCities',
+		'getSettlements',
+		'getWarehouses',
+		'getWarehouseTypes',
+		'getStreet',
+		'delete',
+	])('has %s method', (fn) => {
+		const np = new NovaPoshta();
+		expect(typeof np.address[fn]).toBe('function');
+	});
 
 	test('searchSettlements', () => address.searchSettlements({ CityName: '01001' }).then(checkSnapshot));
 	test.skip('searchSettlementStreets', () => address.searchSettlementStreets().then(checkSnapshot));
