@@ -6,9 +6,9 @@ describe('Counterparty model', () => {
 	const { counterparty } = api;
 	const checkSnapshot = json => expect(JSON.stringify(json)).toMatchSnapshot();
 
-	test.each(Schema.Counterparty)('has %s method', (fn) => {
+	test.each(Schema.Counterparty.map(item => typeof item === 'string' ? item : item.method))('has %s method', (fn) => {
 		const np = new NovaPoshta();
-		expect(typeof np.counterparty[typeof fn == 'string' ? fn : fn.method]).toBe('function');
+		expect(typeof np.counterparty[fn]).toBe('function');
 	});
 
 	test.skip('getCounterpartyAddresses', () => counterparty.getCounterpartyAddresses().then(checkSnapshot));

@@ -1,5 +1,6 @@
 import Model from './Model';
 import Schema from './Schema';
+import ERRORS from './Errors';
 
 export default (() => {
 	const privateProps = new WeakMap();
@@ -32,40 +33,50 @@ export default (() => {
 			const self = this;
 			const args = {
 				method: 'POST',
-				body: JSON.stringify(Object.assign({}, params, { apiKey: self.apiKey })),
+				body: JSON.stringify({ ...params, apiKey: self.apiKey }),
 			};
 
 			return new Promise((resolve, reject) => {
-				const fetchPromise = fetch(self.endpoint, args);
-
-				const onSuccess = (json, data) => {
-					self.log(`NovaPoshta::${params.calledMethod} request executed`, { params, response: json }, 'info');
-					resolve(json, data);
+				const onError = (errors, data) => {
+					self.log(`NovaPoshta::${params.calledMethod} request failed`, { params, errors }, 'error');
+					reject(errors, data);
 				};
 
-				const onError = (error, data) => {
-					self.log(`NovaPoshta::${params.calledMethod} request failed: ${error}`, params, 'error');
-					reject(error, data);
-				};
+				fetch(self.endpoint, args)
+					.then((response) => {
+						if (response.ok) {
+							response
+								.json()
+								.then((json) => {
+									if (json.success) {
+										self.log(`NovaPoshta::${params.calledMethod} request executed`, { params, response: json }, 'info');
+										resolve(json, response);
+									} else {
+										const errors = [];
+										json.errors.forEach((message, i) => {
+											const code = json.errorCodes[i];
+											errors.push({
+												code,
+												message,
+												en: ERRORS[code] || '',
+												ru: ERRORS[code] || '',
+												uk: ERRORS[code] || '',
+											});
+										});
 
-				fetchPromise.catch(error => onError(error, null));
-				fetchPromise.then((response) => {
-					if (response.ok) {
-						const jsonPromise = response.json();
-
-						jsonPromise.catch(error => onError(error, null));
-						jsonPromise.then((json) => {
-							if (json.success) {
-								onSuccess(json, response);
-							} else {
-								const error = json.errors[0] || 'Unexpected error';
-								onError(error, json);
-							}
-						});
-					} else {
-						onError(response.statusText, null);
-					}
-				});
+										onError(errors, json);
+									}
+								})
+								.catch((error) => {
+									onError([{ message: error.toString() }], null);
+								});
+						} else {
+							onError([{ message: response.statusText }], null);
+						}
+					})
+					.catch((error) => {
+						onError([{ message: error.toString() }], null);
+					});
 			});
 		}
 

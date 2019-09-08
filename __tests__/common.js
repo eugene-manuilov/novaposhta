@@ -6,9 +6,9 @@ describe('Common model', () => {
 	const { common } = api;
 	const checkSnapshot = json => expect(JSON.stringify(json)).toMatchSnapshot();
 
-	test.each(Schema.Common)('has %s method', (fn) => {
+	test.each(Schema.Common.map(item => typeof item === 'string' ? item : item.method))('has %s method', (fn) => {
 		const np = new NovaPoshta();
-		expect(typeof np.common[typeof fn == 'string' ? fn : fn.method]).toBe('function');
+		expect(typeof np.common[fn]).toBe('function');
 	});
 
 	test('getTimeIntervals', () => common.getTimeIntervals({ "RecipientCityRef": "8d5a980d-391c-11dd-90d9-001a92567626" }).then(checkSnapshot));

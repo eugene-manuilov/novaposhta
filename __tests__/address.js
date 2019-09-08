@@ -6,9 +6,9 @@ describe('Address model', () => {
 	const { address } = api;
 	const checkSnapshot = json => expect(JSON.stringify(json)).toMatchSnapshot();
 
-	test.each(Schema.Address)('has %s method', (fn) => {
+	test.each(Schema.Address.map(item => typeof item === 'string' ? item : item.method))('has %s method', (fn) => {
 		const np = new NovaPoshta();
-		expect(typeof np.address[typeof fn == 'string' ? fn : fn.method]).toBe('function');
+		expect(typeof np.address[fn]).toBe('function');
 	});
 
 	test('searchSettlements', () => address.searchSettlements({ CityName: '01001' }).then(checkSnapshot));
