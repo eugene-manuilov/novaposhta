@@ -1,12 +1,14 @@
 # Novaposhta 1.0.0
 
-A small library that provides a helper class to work with [Nova Poshta API](https://devcenter.novaposhta.ua/docs/services/). Install it using the following command:
+A small library that provides a helper class to work with [Nova Poshta API](https://devcenter.novaposhta.ua/docs/services/).
+
+## Usage
+
+Install it using the following command:
 
 ```
 npm i novaposhta
 ```
-
-## Usage
 
 The library exports the `NovaPostha` class that you need to use to make requests to API. You need to instantiate an instance of the class providing an object with configuration options. The instance of the class has getters that allows you to get access to a specific model of the APIs.
 
@@ -19,9 +21,16 @@ import NovaPoshta from 'novaposhta';
 
 const api = new NovaPoshta({ apiKey: '...' });
 
-api.address.getCities({ Ref: "ebc0eda9-93ec-11e3-b441-0050568002cf" }).then((json) => {
-    // do something
-});
+api.address
+    .getCities({ Ref: "ebc0eda9-93ec-11e3-b441-0050568002cf" })
+    .then((json) => {
+        // do something
+    })
+    .catch((errors) => {
+        if (Array.isArray(errors)) {
+            errors.forEach((error) => console.log(`[${ error.code || '-' }] ${ error.en || error.uk || error.ru || error.message }`));
+        }
+    });
 ```
 
 A bit more advanced example that demonstrates how you can configure a Winston Logger and use it with the library:
