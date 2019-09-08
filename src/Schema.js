@@ -58,6 +58,29 @@ const schema = {
 		'save',
 		'update',
 	],
+	ScanSheet: [
+		'deleteScanSheet',
+		'insertDocuments',
+		'getScanSheet',
+		'getScanSheetList',
+		'removeDocuments',
+	],
+	AdditionalService: [
+		'delete',
+		'getChangeEWOrdersList',
+		'getRedirectionOrdersList',
+		'getReturnOrdersList',
+		'getReturnReasons',
+		'getReturnReasonsSubtypes',
+		'CheckPossibilityChangeEW',
+		'CheckPossibilityCreateReturn',
+		'save',
+	],
+	AdditionalServiceGeneral: [
+		'delete',
+		'checkPossibilityForRedirecting',
+		'save',
+	],
 };
 
 export default schema;

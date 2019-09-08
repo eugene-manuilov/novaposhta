@@ -1,15 +1,9 @@
 import NovaPoshta from '../src/NovaPoshta';
-import Schema from '../src/Schema';
 
 describe('Counterparty model', () => {
 	const api = new NovaPoshta({ apiKey: '' });
 	const { counterparty } = api;
 	const checkSnapshot = json => expect(JSON.stringify(json)).toMatchSnapshot();
-
-	test.each(Schema.Counterparty.map(item => typeof item === 'string' ? item : item.method))('has %s method', (fn) => {
-		const np = new NovaPoshta();
-		expect(typeof np.counterparty[fn]).toBe('function');
-	});
 
 	test.skip('getCounterpartyAddresses', () => counterparty.getCounterpartyAddresses().then(checkSnapshot));
 	test('getCounterpartyOptions', () => counterparty.getCounterpartyOptions().then(checkSnapshot));

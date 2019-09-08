@@ -1,15 +1,9 @@
 import NovaPoshta from '../src/NovaPoshta';
-import Schema from '../src/Schema';
 
 describe('Address model', () => {
 	const api = new NovaPoshta();
 	const { address } = api;
 	const checkSnapshot = json => expect(JSON.stringify(json)).toMatchSnapshot();
-
-	test.each(Schema.Address.map(item => typeof item === 'string' ? item : item.method))('has %s method', (fn) => {
-		const np = new NovaPoshta();
-		expect(typeof np.address[fn]).toBe('function');
-	});
 
 	test('searchSettlements', () => address.searchSettlements({ CityName: '01001' }).then(checkSnapshot));
 	test.skip('searchSettlementStreets', () => address.searchSettlementStreets().then(checkSnapshot));

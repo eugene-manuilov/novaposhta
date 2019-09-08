@@ -100,6 +100,18 @@ export default (() => {
 			return privateProps.get(this).internetDocument;
 		}
 
+		get scanSheet() {
+			return privateProps.get(this).scanSheet;
+		}
+
+		get additionalService() {
+			return privateProps.get(this).additionalService;
+		}
+
+		get additionalServiceGeneral() {
+			return privateProps.get(this).additionalServiceGeneral;
+		}
+
 	}
 
 	NovaPoshta.version = '1.0.0';
