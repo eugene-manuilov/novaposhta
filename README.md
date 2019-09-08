@@ -1,32 +1,39 @@
-# novaposhta 0.3.0
+# Novaposhta 1.0.0
 
-## Instalation
+A small library that provides a helper class to work with [Nova Poshta API](https://devcenter.novaposhta.ua/docs/services/).
 
-You can add this package using following commands:
+## Usage
+
+Install it using the following command:
 
 ```
 npm i novaposhta
 ```
 
-```
-yarn add novaposhta
-```
+The library exports the `NovaPostha` class that you need to use to make requests to API. You need to instantiate an instance of the class providing an object with configuration options. The instance of the class has getters that allows you to get access to a specific model of the APIs.
 
-## Usage
+Also, please, pay attention that some API methods require API key for authorization. You can obtain it by going to [this page](https://my.novaposhta.ua/settings/index#apikeys).
 
-Basic example:
+Here is a basic example that shows how to use the library:
 
 ```javascript
 import NovaPoshta from 'novaposhta';
 
 const api = new NovaPoshta({ apiKey: '...' });
 
-api.address.getCities({ Ref: "ebc0eda9-93ec-11e3-b441-0050568002cf" }).then((json) => {
-    // do something
-});
+api.address
+    .getCities({ Ref: "ebc0eda9-93ec-11e3-b441-0050568002cf" })
+    .then((json) => {
+        // do something
+    })
+    .catch((errors) => {
+        if (Array.isArray(errors)) {
+            errors.forEach((error) => console.log(`[${ error.code || '-' }] ${ error.en || error.uk || error.ru || error.message }`));
+        }
+    });
 ```
 
-Winston Logger:
+A bit more advanced example that demonstrates how you can configure a Winston Logger and use it with the library:
 
 ```javascript
 import NovaPoshta from 'novaposhta';
@@ -46,7 +53,7 @@ api.address.getCities({ Ref: "ebc0eda9-93ec-11e3-b441-0050568002cf" }).then((jso
 });
 ```
 
-## Supported Methods
+## Supported API Methods
 
 ### Address
 
@@ -109,19 +116,31 @@ api.counterparty.getCounterpartyContactPerson({ ... }).then((json) => {
 - [getCounterpartyOptions](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55801976a0fe4f105c087614)
 - [getCounterpartyContactPerson](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fe424a0fe4f105c087612)
 - [getCounterparties](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd789a0fe4f105c08760f)
-- [saveCounterparty](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557ebbd3a0fe4f02fc455b2e)
-- [updateCounterparty](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fbe62a0fe4f105c08760d)
-- [deleteCounterparty](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd35da0fe4f105c08760e)
-- [saveContactPerson](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55828c4ca0fe4f0adc08ef27)
-- [updateContactPerson](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/558297aca0fe4f0adc08ef28)
-- [deleteContactPerson](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55829aa2a0fe4f0adc08ef29)
+- [save](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557ebbd3a0fe4f02fc455b2e)
+- [update](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fbe62a0fe4f105c08760d)
+- [delete](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd35da0fe4f105c08760e)
+
+### ContactPerson
+
+
+```javascript
+const api = new NovaPoshta({ apiKey: '...' });
+
+api.contactPerson.save({ ... }).then((json) => {
+    // do something
+});
+```
+
+- [save](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55828c4ca0fe4f0adc08ef27)
+- [update](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/558297aca0fe4f0adc08ef28)
+- [delete](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55829aa2a0fe4f0adc08ef29)
 
 ### Internet Document
 
 ```javascript
 const api = new NovaPoshta({ apiKey: '...' });
 
-api.document.getDocumentList({ ... }).then((json) => {
+api.internetDocument.getDocumentList({ ... }).then((json) => {
     // do something
 });
 ```
@@ -130,11 +149,60 @@ api.document.getDocumentList({ ... }).then((json) => {
 - [getDocumentDeliveryDate](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/558153cca0fe4f12149812a1)
 - [getDocumentPrice](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55702ee2a0fe4f0cf4fc53ef)
 - [getStatusDocuments](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd789a0fe4f105c08760f)
-- [saveInternetDocument](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/556ef753a0fe4f02049c664f)
-- [updateInternetDocument](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55701ec2a0fe4f0cf4fc53eb)
-- [deleteInternetDocument](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55701fa5a0fe4f0cf4fc53ec)
+- [save](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/556ef753a0fe4f02049c664f)
+- [update](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55701ec2a0fe4f0cf4fc53eb)
+- [delete](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55701fa5a0fe4f0cf4fc53ec)
 - [generateReport](https://devcenter.novaposhta.ua/docs/services/556eef34a0fe4f02049c664e/operations/55815af6a0fe4f12149812a2)
 
+### ScanSheet
+
+```javascript
+const api = new NovaPoshta({ apiKey: '...' });
+
+api.scanSheet.getScanSheetList({ ... }).then((json) => {
+    // do something
+});
+```
+
+- [deleteScanSheet](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c6a2da0fe4f08e8f7ce2f)
+- [insertDocuments](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c4786a0fe4f0634657b65)
+- [getScanSheet](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c72d7a0fe4f08e8f7ce30)
+- [getScanSheetList](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c7734a0fe4f08e8f7ce31)
+- [removeDocuments](https://devcenter.novaposhta.ua/docs/services/55662bd3a0fe4f10086ec96e/operations/556c6474a0fe4f08e8f7ce2e)
+
+### AdditionalService
+
+```javascript
+const api = new NovaPoshta({ apiKey: '...' });
+
+api.additionalService.getReturnOrdersList({ ... }).then((json) => {
+    // do something
+});
+```
+
+- [delete](https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6cdf4ff2c200cd80adb93)
+- [getChangeEWOrdersList](https://devcenter.novaposhta.ua/docs/services/59eef733ff2c200ce4f6f904/operations/59eefd36eea2700b202b9c45)
+- [getRedirectionOrdersList](https://devcenter.novaposhta.ua/docs/services/58f722b3ff2c200c04673bd1/operations/58f72396ff2c200c04673bd5)
+- [getReturnOrdersList](https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6cdc9eea2700d141ccae2)
+- [getReturnReasons](https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6cd6aeea2700d141ccae1)
+- [getReturnReasonsSubtypes](https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6cdb2ff2c200cd80adb92)
+- [CheckPossibilityChangeEW](https://devcenter.novaposhta.ua/docs/services/59eef733ff2c200ce4f6f904/operations/59eef947ff2c200ce4f6f905)
+- [CheckPossibilityCreateReturn](https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6b830ff2c200cd80adb91)
+- [save](https://devcenter.novaposhta.ua/docs/services/58ad7185eea27006cc36d649/operations/58b6d227ff2c200cd80adb94)
+
+### AdditionalServiceGeneral
+
+```javascript
+const api = new NovaPoshta({ apiKey: '...' });
+
+api.additionalServiceGeneral.checkPossibilityForRedirecting({ ... }).then((json) => {
+    // do something
+});
+```
+
+- [delete](https://devcenter.novaposhta.ua/docs/services/58f722b3ff2c200c04673bd1/operations/58f7237bff2c200c04673bd4)
+- [checkPossibilityForRedirecting](https://devcenter.novaposhta.ua/docs/services/58f722b3ff2c200c04673bd1/operations/58f7233eff2c200c04673bd2)
+- [save](https://devcenter.novaposhta.ua/docs/services/58f722b3ff2c200c04673bd1/operations/58f72344ff2c200c04673bd3)
 
 ## Contribute
 

@@ -1,6 +1,6 @@
-import NovaPoshta from '../index';
+import NovaPoshta from '../src/NovaPoshta';
 
-describe('Address', () => {
+describe('Address model', () => {
 	const api = new NovaPoshta();
 	const { address } = api;
 	const checkSnapshot = json => expect(JSON.stringify(json)).toMatchSnapshot();
