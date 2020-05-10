@@ -1,4 +1,4 @@
-# Novaposhta 1.0.0
+# Novaposhta 1.1.0
 
 A small library that provides a helper class to work with [Nova Poshta API](https://devcenter.novaposhta.ua/docs/services/).
 
@@ -107,14 +107,14 @@ api.common.getTimeIntervals({ "RecipientCityRef": "8d5a980d-391c-11dd-90d9-001a9
 ```javascript
 const api = new NovaPoshta({ apiKey: '...' });
 
-api.counterparty.getCounterpartyContactPerson({ ... }).then((json) => {
+api.counterparty.getCounterpartyContactPersons({ ... }).then((json) => {
     // do something
 });
 ```
 
 - [getCounterpartyAddresses](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fdcb4a0fe4f105c087611)
 - [getCounterpartyOptions](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/55801976a0fe4f105c087614)
-- [getCounterpartyContactPerson](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fe424a0fe4f105c087612)
+- [getCounterpartyContactPersons](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fe424a0fe4f105c087612)
 - [getCounterparties](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fd789a0fe4f105c08760f)
 - [save](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557ebbd3a0fe4f02fc455b2e)
 - [update](https://devcenter.novaposhta.ua/docs/services/557eb8c8a0fe4f02fc455b2d/operations/557fbe62a0fe4f105c08760d)
