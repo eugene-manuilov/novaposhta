@@ -32,7 +32,7 @@ const schema = {
 		'delete',
 		'getCounterpartyAddresses',
 		'getCounterpartyOptions',
-		'getCounterpartyContactPerson',
+		'getCounterpartyContactPersons',
 		'getCounterparties',
 		'save',
 		'update',

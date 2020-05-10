@@ -114,7 +114,7 @@ export default (() => {
 
 	}
 
-	NovaPoshta.version = '1.0.0';
+	NovaPoshta.version = '1.1.0';
 
 	return NovaPoshta;
 })();

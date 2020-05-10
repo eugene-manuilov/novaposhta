@@ -7,7 +7,7 @@ describe('Counterparty model', () => {
 
 	test.skip('getCounterpartyAddresses', () => counterparty.getCounterpartyAddresses().then(checkSnapshot));
 	test('getCounterpartyOptions', () => counterparty.getCounterpartyOptions().then(checkSnapshot));
-	test.skip('getCounterpartyContactPerson', () => counterparty.getCounterpartyContactPerson().then(checkSnapshot));
+	test.skip('getCounterpartyContactPersons', () => counterparty.getCounterpartyContactPersons().then(checkSnapshot));
 	test.skip('getCounterparties', () => counterparty.getCounterparties().then(checkSnapshot));
 	test.skip('save', () => counterparty.save().then(checkSnapshot));
 	test.skip('update', () => counterparty.update().then(checkSnapshot));
