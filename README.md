@@ -1,4 +1,4 @@
-# Novaposhta 1.0.0
+# Novaposhta 1.1.0
 
 A small library that provides a helper class to work with [Nova Poshta API](https://devcenter.novaposhta.ua/docs/services/).
 
