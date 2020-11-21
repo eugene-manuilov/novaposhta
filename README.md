@@ -1,4 +1,8 @@
-# Novaposhta 1.1.0
+# Novaposhta
+
+[![Version](https://img.shields.io/npm/v/novaposhta.svg)](https://www.npmjs.com/package/novaposhta)
+[![Downloads/week](https://img.shields.io/npm/dw/novaposhta.svg)](https://www.npmjs.com/package/novaposhta)
+[![License](https://img.shields.io/npm/l/novaposhta.svg)](https://github.com/eugene-manuilov/novaposhta/blob/master/package.json)
 
 A small library that provides a helper class to work with [Nova Poshta API](https://devcenter.novaposhta.ua/docs/services/).
 
@@ -10,7 +14,7 @@ Install it using the following command:
 npm i novaposhta
 ```
 
-The library exports the `NovaPostha` class that you need to use to make requests to API. You need to instantiate an instance of the class providing an object with configuration options. The instance of the class has getters that allows you to get access to a specific model of the APIs.
+The library exports the `NovaPoshta` class that you need to use to make requests to API. You need to instantiate an instance of the class providing an object with configuration options. The instance of the class has getters that allows you to get access to a specific model of the APIs.
 
 Also, please, pay attention that some API methods require API key for authorization. You can obtain it by going to [this page](https://my.novaposhta.ua/settings/index#apikeys).
 
@@ -206,7 +210,7 @@ api.additionalServiceGeneral.checkPossibilityForRedirecting({ ... }).then((json)
 
 ## Contribute
 
-What to help or have a suggestion? Open a [new ticket](https://github.com/eugene-manuilov/novaposhta/issues/new) and we can discuss it or submit pull request. Please, make sure you run `npm test` before submitting a pull request.
+Want to help or have a suggestion? Open a [new ticket](https://github.com/eugene-manuilov/novaposhta/issues/new) and we can discuss it or submit a pull request. Please, make sure you run `npm test` before submitting a pull request.
 
 ## License
 
