@@ -2,7 +2,8 @@
 
 ## [Unreleased] - TBD
 
-- Updated dependencies to the latest versions.
+- Updated dependencies to latest versions.
+- Updated jest snpashots to use latest changes.
 
 ## [v1.1.0] - 2020-05-10
 
